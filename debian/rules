@@ -1,5 +1,7 @@
 #!/usr/bin/make -f
 
+include /usr/share/dpkg/pkg-info.mk
+
 #export DH_VERBOSE=1
 export DH_GOPKG := github.com/google/mtail
 
@@ -11,7 +13,7 @@ export DH_GOLANG_GO_GENERATE := 1
 BUILDDIR := $(CURDIR)/build
 
 %:
-	dh $@ --buildsystem=golang --with=golang --builddirectory=$(BUILDDIR)
+	dh $@ --buildsystem=golang --with=golang --builddirectory=$(BUILDDIR) -ldflags="-X main.Version=$(DEB_UPSTREAM_VERSION) -X main.Revision=debian-$(DEB_VERSION)"
 
 override_dh_auto_test:
 	GOPATH=$(BUILDDIR) go test -v -timeout 60s $(DH_GOPKG)
