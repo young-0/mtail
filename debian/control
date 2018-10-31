@@ -1,6 +1,6 @@
 Source: mtail
 Section: net
-Priority: extra
+Priority: optional
 Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
 Uploaders: Martín Ferrari <tincho@debian.org>, Jamie Wilkinson <jaq@debian.org>
 Build-Depends: debhelper (>= 9.0.0),
