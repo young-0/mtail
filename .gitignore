@@ -27,3 +27,9 @@ workdir/*
 /.fuzz-dep-stamp
 /tests/regtest
 /debian/mtail.debhelper.log
+/debian/mtail.substvars
+/debian/mtail/*
+/debian/patches/*
+/debian/files
+/debian/.debhelper/*
+/.pc/*
