@@ -1,9 +1,9 @@
-mtail (3.0.0-rc16-0) unstable; urgency=medium
+mtail (3.0.0-rc16-0) experimental; urgency=medium
 
   * New upstream release.
   * Update package dependencies.
   * Fix debian/source options for packaging from git.
-  * Set the linkerflags for embedding mtail version in the build. 
+  * Set the linkerflags for embedding mtail version in the build.
 
  -- Jamie Wilkinson <jaq@debian.org>  Thu, 01 Nov 2018 06:46:41 +1100
 
