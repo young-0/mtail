@@ -1,9 +1,11 @@
-#!/bin/bash
+#!/bin/bash -x
 
-export GOBIN="$(mktemp -d ${TMPDIR:-/tmp}/mtail-test-binary.XXXXXXXX)"
-go install
-export MTAIL_BIN=${GOBIN}/mtail
-trap "rm -rf $GOBIN" EXIT
+if [ -z "${MTAIL_BIN}" ]; then
+    export GOBIN="$(mktemp -d ${TMPDIR:-/tmp}/mtail-test-binary.XXXXXXXX)"
+    go install
+    export MTAIL_BIN=${GOBIN}/mtail
+    trap "rm -rf $GOBIN" EXIT
+fi
 
 ret=0
 
