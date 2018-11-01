@@ -7,6 +7,8 @@ export DH_GOPKG := github.com/google/mtail
 
 export DH_GOLANG_INSTALL_EXTRA := examples/ testdata/
 
+export DH_GOLANG_EXCLUDES := emgen
+
 BUILDDIR := $(CURDIR)/build
 
 %:
