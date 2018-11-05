@@ -7,17 +7,32 @@ export DH_GOPKG := github.com/google/mtail
 
 export DH_GOLANG_INSTALL_EXTRA := examples/ testdata/
 
+export DH_GOLANG_EXCLUDES := /emgen
+export DH_GOLANG_INSTALL_EXTRA := examples/ testdata/ \
+    testutil/reader_test.golden vm/parser.y
+
 BUILDDIR := $(CURDIR)/build
+BUILDFLAGS = -ldflags \
+  " -X main.Version=$(DEB_VERSION_UPSTREAM)\
+    -X main.Revision=debian-$(DEB_VERSION)"
 
 %:
-	dh $@ --buildsystem=golang --with=golang --builddirectory=$(BUILDDIR) -ldflags="-X main.Version=$(DEB_UPSTREAM_VERSION) -X main.Revision=debian-$(DEB_VERSION)"
+	dh $@ --buildsystem=golang --with=golang --builddirectory=$(BUILDDIR)
+
+override_dh_auto_build:
+	dh_auto_build -- $(BUILDFLAGS)
 
 override_dh_auto_test:
-	GOPATH=$(BUILDDIR) go test -v -timeout 60s $(DH_GOPKG)
-ifeq ($(DEB_HOST_ARCH_CPU),amd64)
-	GOPATH=$(BUILDDIR) go test -v -timeout 5m -race $(DH_GOPKG)
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	dh_auto_test
+	# Only run race tests on amd64.
+	test "$(DEB_HOST_ARCH_CPU)" != amd64 || \
+            GOPATH=$(BUILDDIR) go test -v -timeout 5m -race $(DH_GOPKG)
 endif
 	MTAIL_BIN=$(BUILDDIR)/mtail tests/regtest.sh
+
+override_dh_installinit:
+	dh_installinit --no-enable --no-start
 
 override_dh_auto_install:
 	dh_auto_install -- --no-source
