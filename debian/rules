@@ -9,7 +9,7 @@ export DH_GOLANG_INSTALL_EXTRA := examples/ testdata/
 
 export DH_GOLANG_EXCLUDES := /emgen
 export DH_GOLANG_INSTALL_EXTRA := examples/ testdata/ \
-    testutil/reader_test.golden vm/parser.y
+    testutil/reader_test.golden
 
 BUILDDIR := $(CURDIR)/build
 BUILDFLAGS = -ldflags \
