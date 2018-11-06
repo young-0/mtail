@@ -6,6 +6,7 @@ mtail (3.0.0~rc16-2) UNRELEASED; urgency=medium
   * debuan/control: Add myself as uploader.
   * debian/rules: No longer generate vm/parser.y, it's provided upstream.
   * debian/rules: Add regression tests.
+  * Remove unnecessary patch merged upstream 01-Avoid_test_timeout.patch.
 
  -- Jamie Wilkinson <jaq@debian.org>  Mon, 05 Nov 2018 16:04:09 -0800
 
