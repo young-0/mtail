@@ -28,7 +28,7 @@ ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	test "$(DEB_HOST_ARCH_CPU)" != amd64 || \
             GOPATH=$(BUILDDIR) go test -v -timeout 5m -race $(DH_GOPKG)
 endif
-	MTAIL_BIN=$(BUILDDIR)/mtail tests/regtest.sh
+	MTAIL_BIN=$(BUILDDIR)/bin/mtail tests/regtest.sh
 
 override_dh_installinit:
 	dh_installinit --no-enable --no-start
