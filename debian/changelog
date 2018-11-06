@@ -1,4 +1,4 @@
-mtail (3.0.0~rc16-2) UNRELEASED; urgency=medium
+mtail (3.0.0~rc17-1) UNRELEASED; urgency=medium
 
   * Add new build dependency on groupcache.
   * debian/gbp.conf: Specify how to build from the github repo.
@@ -8,7 +8,7 @@ mtail (3.0.0~rc16-2) UNRELEASED; urgency=medium
   * debian/rules: Add regression tests.
   * Remove unnecessary patch merged upstream 01-Avoid_test_timeout.patch.
 
- -- Jamie Wilkinson <jaq@debian.org>  Mon, 05 Nov 2018 16:04:09 -0800
+ -- Jamie Wilkinson <jaq@debian.org>  Tue, 06 Nov 2018 18:35:38 +1100
 
 mtail (3.0.0~rc16-1) unstable; urgency=medium
 
