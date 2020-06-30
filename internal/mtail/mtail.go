@@ -348,7 +348,7 @@ func (m *Server) Serve() error {
 	}()
 	pollQuit := make(chan int, 1) // Channel to stop PollLogPathPatterns.
 	go func(chan int) {
-		ticker := time.NewTicker(time.Second)
+		ticker := time.NewTicker(10 * time.Second)
 		for {
 			select {
 			case <-ticker.C:
