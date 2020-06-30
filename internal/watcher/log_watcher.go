@@ -54,8 +54,8 @@ func NewLogWatcher(pollInterval time.Duration, enableFsnotify bool) (*LogWatcher
 		}
 	}
 	if f == nil && pollInterval == 0 {
-		glog.Infof("fsnotify disabled and no poll interval specified; defaulting to 250ms poll")
-		pollInterval = time.Millisecond * 250
+		glog.Infof("fsnotify disabled and no poll interval specified; defaulting to 1250ms poll")
+		pollInterval = time.Millisecond * 1250
 	}
 	w := &LogWatcher{
 		watcher: f,
